@@ -1,7 +1,9 @@
 
 const merchantMiddleware = {
-  test: function () {
-    return true;
+  create: (publicKey, privateKey) => {
+    return (req, res, next) => {
+      next();
+    };
   }
 };
 
