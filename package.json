@@ -18,7 +18,9 @@
     "test:watch": "jest --watch",
     "publish": "npm publish --access public"
   },
-  "dependencies": {},
+  "dependencies": {
+    "crypto-js": "^4.0.0"
+  },
   "devDependencies": {
     "eslint": "^7.11.0",
     "eslint-plugin-security": "^1.4.0",
