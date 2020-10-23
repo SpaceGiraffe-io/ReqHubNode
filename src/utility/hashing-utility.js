@@ -9,7 +9,7 @@ const hashingUtility = {
     const nonce = CryptoJS.enc.Base64.stringify(nonceData);
     return nonce;
   },
-  generateToken: (privateKey, publicKey, timestamp, nonce, requestUrl) => {
+  generateToken: (publicKey, privateKey, timestamp, nonce, requestUrl) => {
     const secret = `${privateKey}${timestamp}${nonce}${requestUrl}`;
     const hmacsha256 = CryptoJS.HmacSHA256(publicKey, secret);
     const token = CryptoJS.enc.Base64.stringify(hmacsha256);

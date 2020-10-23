@@ -16,7 +16,7 @@ describe('hashingUtility', () => {
   });
 
   it('should generateToken', () => {
-    const result = hashingUtility.generateToken('privateKey', 'publicKey', 'timestamp', 'nonce', '/request-url');
+    const result = hashingUtility.generateToken('publicKey', 'privateKey', 'timestamp', 'nonce', '/request-url');
     expect(result.length).toBeGreaterThan(40);
   });
 });
