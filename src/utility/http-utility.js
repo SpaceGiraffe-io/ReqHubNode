@@ -1,7 +1,5 @@
 const https = require('https');
 
-const hashingUtility = require('../utility/hashing-utility');
-
 const httpUtility = {
   createRequest: (url, method, data, options) => {
     return new Promise((resolve, reject) => {
@@ -24,9 +22,6 @@ const httpUtility = {
         }
       }
 
-      // set up ReqHub headers
-      const requestUrl = url;
-
       // send the request
       const req = https.request(url, requestOptions, res => {
         res.on('data', responseData => {
@@ -43,21 +38,6 @@ const httpUtility = {
       }
       req.end();
     });
-  },
-
-  generateHeaders: (type, publicKey, privateKey, requestUrl) => {
-    const timestamp = hashingUtility.generateTimestamp();
-    const nonce = hashingUtility.generateNonce();
-    const token = hashingUtility.generateToken(publicKey, privateKey, timestamp, nonce, requestUrl);
-
-    var headers = {
-      [`${type}Key`]: publicKey,
-      [`${type}Url`]: requestUrl,
-      [`${type}Timestamp`]: timestamp,
-      [`${type}Nonce`]: nonce,
-      [`${type}Token`]: token
-    };
-    return { headers };
   }
 };
 

@@ -1,10 +1,11 @@
 const httpUtility = require('../utility/http-utility');
+const reqhubUtility = require('../utility/reqhub-utility');
 
 const apiClient = {
   create: (publicKey, privateKey) => {
     return {
       get: (url, options) => {
-        const reqHubHeaders = httpUtility.generateHeaders('Client', publicKey, privateKey, url);
+        const reqHubHeaders = reqhubUtility.generateHeaders('Client', publicKey, privateKey, url);
         const requestOptions = {
           ...options,
           ...reqHubHeaders
@@ -13,7 +14,7 @@ const apiClient = {
       },
 
       post: (url, data, options) => {
-        const reqHubHeaders = httpUtility.generateHeaders('Client', publicKey, privateKey, url);
+        const reqHubHeaders = reqhubUtility.generateHeaders('Client', publicKey, privateKey, url);
         const requestOptions = {
           ...options,
           ...reqHubHeaders
@@ -23,7 +24,7 @@ const apiClient = {
       },
 
       put: (url, data, options) => {
-        const reqHubHeaders = httpUtility.generateHeaders('Client', publicKey, privateKey, url);
+        const reqHubHeaders = reqhubUtility.generateHeaders('Client', publicKey, privateKey, url);
         const requestOptions = {
           ...options,
           ...reqHubHeaders
@@ -33,7 +34,7 @@ const apiClient = {
       },
 
       delete: (url, options) => {
-        const reqHubHeaders = httpUtility.generateHeaders('Client', publicKey, privateKey, url);
+        const reqHubHeaders = reqhubUtility.generateHeaders('Client', publicKey, privateKey, url);
         const requestOptions = {
           ...options,
           ...reqHubHeaders
@@ -42,7 +43,7 @@ const apiClient = {
       },
 
       send: (url, method, data, options) => {
-        const reqHubHeaders = httpUtility.generateHeaders('Client', publicKey, privateKey, url);
+        const reqHubHeaders = reqhubUtility.generateHeaders('Client', publicKey, privateKey, url);
         const requestOptions = {
           ...options,
           ...reqHubHeaders
