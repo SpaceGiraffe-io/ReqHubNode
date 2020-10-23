@@ -6,12 +6,12 @@ const merchantClient = {
     return {
       track: (req) => {
         const url = req.path;
-        const reqHubHeaders = reqhubUtility.generateHeaders('Merchant', publicKey, privateKey, url);
+        const reqhubOptions = reqhubUtility.generateHeaders('Merchant', publicKey, privateKey, url);
         const apiBase = baseAddress || 'https://api.reqhub.io';
         const data = {
           requestUrl: url
         };
-        return httpUtility.createRequest(`${apiBase}/tracking`, 'POST', data, reqHubHeaders);
+        return httpUtility.createRequest(`${apiBase}/tracking`, 'POST', data, reqhubOptions);
       }
     }
   }
