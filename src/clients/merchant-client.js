@@ -3,13 +3,25 @@ const reqhubUtility = require('../utility/reqhub-utility');
 
 const merchantClient = {
   create: (publicKey, privateKey, baseAddress) => {
+    const apiBase = baseAddress || 'https://api.reqhub.io';
+
     return {
       track: (req) => {
-        const url = req.path;
-        const reqhubOptions = reqhubUtility.generateHeaders('Merchant', publicKey, privateKey, url);
-        const apiBase = baseAddress || 'https://api.reqhub.io';
+        const path = req.path;
+        const reqhubOptions = reqhubUtility.generateHeaders('Merchant', publicKey, privateKey, path);
+
+        // add the client headers
+        reqhubOptions.headers = {
+          ...reqhubOptions.headers,
+          'ClientKey': req.headers['ClientKey'],
+          'ClientUrl': req.headers['ClientUrl'],
+          'ClientTimestamp': req.headers['ClientTimestamp'],
+          'ClientNonce': req.headers['ClientNonce'],
+          'ClientToken': req.headers['ClientKeToken']
+        };
+
         const data = {
-          requestUrl: url
+          requestUrl: path
         };
         return httpUtility.createRequest(`${apiBase}/tracking`, 'POST', data, reqhubOptions);
       }
