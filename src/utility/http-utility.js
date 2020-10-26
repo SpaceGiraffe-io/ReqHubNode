@@ -24,7 +24,7 @@ const httpUtility = {
 
       // send the request
       const req = https.request(url, requestOptions, res => {
-        res.on('data', responseData => {
+        res.on('data', (responseData) => {
           resolve(responseData);
         });
       });
