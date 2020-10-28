@@ -8,7 +8,7 @@ const apiClient = {
         const reqhubOptions = reqhubUtility.generateHeaders('Client', publicKey, privateKey, url);
         const requestOptions = options || {};
         requestOptions.headers = {
-          ...options.headers,
+          ...requestOptions.headers,
           ...reqhubOptions.headers
         };
         return httpUtility.createRequest(url, 'GET', null, requestOptions);
@@ -18,29 +18,27 @@ const apiClient = {
         const reqhubOptions = reqhubUtility.generateHeaders('Client', publicKey, privateKey, url);
         const requestOptions = options || {};
         requestOptions.headers = {
-          ...options.headers,
+          ...requestOptions.headers,
           ...reqhubOptions.headers
         };
-        const requestData = data ? JSON.stringify(data) : null;
-        return httpUtility.createRequest(url, 'POST', requestData, requestOptions);
+        return httpUtility.createRequest(url, 'POST', data, requestOptions);
       },
 
       put: (url, data, options) => {
         const reqhubOptions = reqhubUtility.generateHeaders('Client', publicKey, privateKey, url);
         const requestOptions = options || {};
         requestOptions.headers = {
-          ...options.headers,
+          ...requestOptions.headers,
           ...reqhubOptions.headers
         };
-        const requestData = data ? JSON.stringify(data) : null;
-        return httpUtility.createRequest(url, 'PUT', requestData, requestOptions);
+        return httpUtility.createRequest(url, 'PUT', data, requestOptions);
       },
 
       delete: (url, options) => {
         const reqhubOptions = reqhubUtility.generateHeaders('Client', publicKey, privateKey, url);
         const requestOptions = options || {};
         requestOptions.headers = {
-          ...options.headers,
+          ...requestOptions.headers,
           ...reqhubOptions.headers
         };
         return httpUtility.createRequest(url, 'DELETE', null, requestOptions);
@@ -50,7 +48,7 @@ const apiClient = {
         const reqhubOptions = reqhubUtility.generateHeaders('Client', publicKey, privateKey, url);
         const requestOptions = options || {};
         requestOptions.headers = {
-          ...options.headers,
+          ...requestOptions.headers,
           ...reqhubOptions.headers
         };
         return httpUtility.createRequest(url, method, data, requestOptions);

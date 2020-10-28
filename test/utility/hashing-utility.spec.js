@@ -5,17 +5,17 @@ describe('hashingUtility', () => {
     expect(hashingUtility).toBeTruthy();
   });
 
-  it('should generateTimestamp', () => {
+  it('should generate timestamp', () => {
     const result = hashingUtility.generateTimestamp();
     expect(result.length).toBe(13);
   });
 
-  it('should generateNonce', () => {
+  it('should generate nonce', () => {
     const result = hashingUtility.generateNonce();
     expect(result.length).toBeGreaterThan(20);
   });
 
-  it('should generateToken', () => {
+  it('should generate token', () => {
     const result = hashingUtility.generateToken('publicKey', 'privateKey', 'timestamp', 'nonce', '/request-url');
     expect(result.length).toBeGreaterThan(40);
   });

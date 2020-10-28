@@ -15,17 +15,17 @@ const httpUtility = {
 
       // set up headers for POST/PUT/PATCH requests
       if (requestData) {
-        if (!requestOptions.headers['Content-Type']) {
+        if (requestOptions.headers['Content-Type'] == null) {
           requestOptions.headers['Content-Type'] = 'application/json';
         }
 
-        if (!requestOptions.headers['Content-Length']) {
+        if (requestOptions.headers['Content-Length'] == null) {
           requestOptions.headers['Content-Length'] = requestData.length;
         }
       }
 
       // send the request
-      const req = https.request(url, requestOptions, res => {
+      const req = https.request(url, requestOptions, (res) => {
         const result = {
           status: res.statusCode
         };
