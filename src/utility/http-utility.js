@@ -26,22 +26,24 @@ const httpUtility = {
 
       // send the request
       const req = https.request(url, requestOptions, res => {
+        const result = {
+          status: res.statusCode
+        };
 
-        const responseData = [];
-
+        const dataBuffer = [];
         res.on('data', (chunk) => {
-          responseData.push(chunk);
+          dataBuffer.push(chunk);
         });
 
         res.on('end', () => {
-          let result = Buffer.concat(responseData).toString();
+          const dataString = Buffer.concat(dataBuffer).toString();
           try {
-            result = JSON.parse(result);
+            result.data = JSON.parse(dataString);
           } catch {
-            // couldn't parse json, just resolve the string
-          } finally {
-            resolve(result);
+            // couldn't parse json, just use the string
+            result.data = dataString;
           }
+          resolve(result);
         });
       });
 
