@@ -8,6 +8,8 @@ const httpUtility = {
         ...options
       };
 
+      const requestData = data ? JSON.stringify(data) : null;
+
       // ensure the headers option is defined, without removing user-defined headers
       requestOptions.headers = requestOptions.headers || {};
 
@@ -18,7 +20,7 @@ const httpUtility = {
         }
 
         if (!requestOptions.headers['Content-Length']) {
-          requestOptions.headers['Content-Length'] = data.length;
+          requestOptions.headers['Content-Length'] = requestData.length;
         }
       }
 

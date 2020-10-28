@@ -13,11 +13,11 @@ const merchantClient = {
         // add the client headers
         reqhubOptions.headers = {
           ...reqhubOptions.headers,
-          'ClientKey': req.headers['ClientKey'],
-          'ClientUrl': req.headers['ClientUrl'],
-          'ClientTimestamp': req.headers['ClientTimestamp'],
-          'ClientNonce': req.headers['ClientNonce'],
-          'ClientToken': req.headers['ClientKeToken']
+          'ClientKey': req.headers['clientkey'],
+          'ClientUrl': req.headers['clienturl'],
+          'ClientTimestamp': req.headers['clienttimestamp'],
+          'ClientNonce': req.headers['clientnonce'],
+          'ClientToken': req.headers['clienttoken']
         };
 
         const data = {
