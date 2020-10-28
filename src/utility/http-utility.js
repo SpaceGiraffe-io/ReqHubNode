@@ -26,8 +26,22 @@ const httpUtility = {
 
       // send the request
       const req = https.request(url, requestOptions, res => {
-        res.on('data', (responseData) => {
-          resolve(responseData);
+
+        const responseData = [];
+
+        res.on('data', (chunk) => {
+          responseData.push(chunk);
+        });
+
+        res.on('end', () => {
+          let result = Buffer.concat(responseData).toString();
+          try {
+            result = JSON.parse(result);
+          } catch {
+            // couldn't parse json, just resolve the string
+          } finally {
+            resolve(result);
+          }
         });
       });
 
