@@ -1,6 +1,6 @@
 {
   "name": "reqhub",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "author": "SpaceGiraffe, LLC",
   "description": "ReqHub middleware for NodeJs projects. Distribute your API using the ReqHub platform in just a few lines! For more information, visit https://reqhub.io/.",
   "homepage": "https://github.com/SpaceGiraffe-io/ReqHubNode#readme",
