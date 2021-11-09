@@ -7,7 +7,7 @@ const merchantClient = {
 
     return {
       track: (req) => {
-        const path = req.path;
+        const path = req.originalUrl;
         const reqhubOptions = reqhubUtility.generateHeaders('Merchant', publicKey, privateKey, path);
 
         // add the client headers
