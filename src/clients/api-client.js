@@ -5,7 +5,8 @@ const apiClient = {
   create: (publicKey, privateKey) => {
     return {
       get: (url, options) => {
-        const reqhubOptions = reqhubUtility.generateHeaders('Client', publicKey, privateKey, url);
+        const path = new URL(url).pathname;
+        const reqhubOptions = reqhubUtility.generateHeaders('Client', publicKey, privateKey, path);
         const requestOptions = options || {};
         requestOptions.headers = {
           ...requestOptions.headers,
@@ -15,7 +16,8 @@ const apiClient = {
       },
 
       post: (url, data, options) => {
-        const reqhubOptions = reqhubUtility.generateHeaders('Client', publicKey, privateKey, url);
+        const path = new URL(url).pathname;
+        const reqhubOptions = reqhubUtility.generateHeaders('Client', publicKey, privateKey, path);
         const requestOptions = options || {};
         requestOptions.headers = {
           ...requestOptions.headers,
@@ -25,7 +27,8 @@ const apiClient = {
       },
 
       put: (url, data, options) => {
-        const reqhubOptions = reqhubUtility.generateHeaders('Client', publicKey, privateKey, url);
+        const path = new URL(url).pathname;
+        const reqhubOptions = reqhubUtility.generateHeaders('Client', publicKey, privateKey, path);
         const requestOptions = options || {};
         requestOptions.headers = {
           ...requestOptions.headers,
@@ -35,7 +38,8 @@ const apiClient = {
       },
 
       delete: (url, options) => {
-        const reqhubOptions = reqhubUtility.generateHeaders('Client', publicKey, privateKey, url);
+        const path = new URL(url).pathname;
+        const reqhubOptions = reqhubUtility.generateHeaders('Client', publicKey, privateKey, path);
         const requestOptions = options || {};
         requestOptions.headers = {
           ...requestOptions.headers,
@@ -45,7 +49,8 @@ const apiClient = {
       },
 
       send: (url, method, data, options) => {
-        const reqhubOptions = reqhubUtility.generateHeaders('Client', publicKey, privateKey, url);
+        const path = new URL(url).pathname;
+        const reqhubOptions = reqhubUtility.generateHeaders('Client', publicKey, privateKey, path);
         const requestOptions = options || {};
         requestOptions.headers = {
           ...requestOptions.headers,

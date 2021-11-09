@@ -2,7 +2,7 @@ const hashingUtility = require('./hashing-utility');
 
 const reqhubUtility = {
   generateHeaders: (type, publicKey, privateKey, requestUrl) => {
-    const path = new URL(requestUrl).pathname;
+    const path = requestUrl;
     const timestamp = hashingUtility.generateTimestamp();
     const nonce = hashingUtility.generateNonce();
     const token = hashingUtility.generateToken(publicKey, privateKey, timestamp, nonce, path);
