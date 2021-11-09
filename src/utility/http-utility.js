@@ -1,3 +1,4 @@
+const http = require('http');
 const https = require('https');
 
 const httpUtility = {
@@ -25,7 +26,8 @@ const httpUtility = {
       }
 
       // send the request
-      const req = https.request(url, requestOptions, (res) => {
+      const protocol = url.startsWith('https') ? https : http;
+      const req = protocol.request(url, requestOptions, (res) => {
         const result = {
           status: res.statusCode
         };
