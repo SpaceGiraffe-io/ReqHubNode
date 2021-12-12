@@ -58,7 +58,7 @@ const apiClient = {
         };
         return httpUtility.createRequest(url, method, data, requestOptions);
       }
-    }
+    };
   }
 };
 

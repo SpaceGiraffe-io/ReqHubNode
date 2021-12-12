@@ -10,10 +10,10 @@ describe('merchantClient', () => {
 
   it('should create', () => {
     const client = merchantClient.create('publicKey', 'privateKey');
-    expect(client.track).toBeTruthy();
+    expect(client.verify).toBeTruthy();
   });
 
-  describe('track', () => {
+  describe('verify', () => {
     it('should create request', () => {
       const client = merchantClient.create('publicKey', 'privateKey');
       const reqhubOptions = {
@@ -28,7 +28,7 @@ describe('merchantClient', () => {
       spyOn(reqhubUtility, 'generateHeaders').and.returnValue(reqhubOptions);
       const spy = spyOn(httpUtility, 'createRequest');
       const req = {
-        path: '/path',
+        originalUrl: '/path',
         headers: {
           'clientkey': 'client-key',
           'clienturl': 'client-url',
@@ -38,7 +38,7 @@ describe('merchantClient', () => {
         }
       };
 
-      const result = client.track(req);
+      client.verify(req);
 
       const expectedHeaders = {
         'MerchantKey': 'merchant-key',
@@ -52,7 +52,7 @@ describe('merchantClient', () => {
         'ClientNonce': 'client-nonce',
         'ClientToken': 'client-token'
       };
-      expect(spy).toHaveBeenCalledWith('https://api.reqhub.io/tracking', 'POST', { requestUrl: '/path' }, { headers: expectedHeaders });
+      expect(spy).toHaveBeenCalledWith('https://api.reqhub.io/req', 'POST', { requestUrl: '/path' }, { headers: expectedHeaders });
     });
 
     it('should create request with alternate base address', () => {
@@ -69,7 +69,7 @@ describe('merchantClient', () => {
       spyOn(reqhubUtility, 'generateHeaders').and.returnValue(reqhubOptions);
       const spy = spyOn(httpUtility, 'createRequest');
       const req = {
-        path: '/path',
+        originalUrl: '/path',
         headers: {
           'clientkey': 'client-key',
           'clienturl': 'client-url',
@@ -79,7 +79,7 @@ describe('merchantClient', () => {
         }
       };
 
-      const result = client.track(req);
+      client.verify(req);
 
       const expectedHeaders = {
         'MerchantKey': 'merchant-key',
@@ -93,7 +93,7 @@ describe('merchantClient', () => {
         'ClientNonce': 'client-nonce',
         'ClientToken': 'client-token'
       };
-      expect(spy).toHaveBeenCalledWith('https://test.reqhub.io/tracking', 'POST', { requestUrl: '/path' }, { headers: expectedHeaders });
+      expect(spy).toHaveBeenCalledWith('https://test.reqhub.io/req', 'POST', { requestUrl: '/path' }, { headers: expectedHeaders });
     });
   });
 });

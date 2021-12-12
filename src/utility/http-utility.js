@@ -41,7 +41,7 @@ const httpUtility = {
           const dataString = Buffer.concat(dataBuffer).toString();
           try {
             result.data = JSON.parse(dataString);
-          } catch {
+          } catch (e) {
             // couldn't parse json, just use the string
             result.data = dataString;
           }

@@ -26,7 +26,7 @@ describe('httpUtility', () => {
       return req;
     });
 
-    httpUtility.createRequest('/url', 'TEST')
+    httpUtility.createRequest('https://spacegiraffe.io/url', 'TEST')
       .then((response) => {
         expect(response.status).toBe(200);
         done();
@@ -56,8 +56,8 @@ describe('httpUtility', () => {
       test: 5
     };
 
-    httpUtility.createRequest('/url', 'TEST', data)
-      .then((response) => {
+    httpUtility.createRequest('https://spacegiraffe.io/url', 'TEST', data)
+      .then(() => {
         expect(req.write).toHaveBeenCalled();
         done();
       });
@@ -92,8 +92,8 @@ describe('httpUtility', () => {
       test: 5
     };
 
-    httpUtility.createRequest('/url', 'TEST', data, options)
-      .then((response) => {
+    httpUtility.createRequest('https://spacegiraffe.io/url', 'TEST', data, options)
+      .then(() => {
         // coverage only -- hard to check parameters with the callback function
         done();
       });
@@ -121,7 +121,7 @@ describe('httpUtility', () => {
       return req;
     });
 
-    httpUtility.createRequest('/url', 'TEST')
+    httpUtility.createRequest('https://spacegiraffe.io/url', 'TEST')
       .then((response) => {
         expect(response.data).toBe('test');
         done();
@@ -138,11 +138,11 @@ describe('httpUtility', () => {
       write: jest.fn(),
       end: jest.fn()
     };
-    spyOn(https, 'request').and.callFake((url, requestOptions, callback) => {
+    spyOn(https, 'request').and.callFake(() => {
       return req;
     });
 
-    httpUtility.createRequest('/url', 'TEST')
+    httpUtility.createRequest('https://spacegiraffe.io/url', 'TEST')
       .catch((error) => {
         expect(error).toBe('test');
         done();

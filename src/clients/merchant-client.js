@@ -6,7 +6,7 @@ const merchantClient = {
     const apiBase = baseAddress || 'https://api.reqhub.io';
 
     return {
-      track: (req) => {
+      verify: (req) => {
         const path = req.originalUrl;
         const reqhubOptions = reqhubUtility.generateHeaders('Merchant', publicKey, privateKey, path);
 
@@ -23,9 +23,9 @@ const merchantClient = {
         const data = {
           requestUrl: path
         };
-        return httpUtility.createRequest(`${apiBase}/tracking`, 'POST', data, reqhubOptions);
+        return httpUtility.createRequest(`${apiBase}/req`, 'POST', data, reqhubOptions);
       }
-    }
+    };
   }
 };
 

@@ -5,7 +5,7 @@ const merchantMiddleware = {
     const client = merchantClient.create(publicKey, privateKey, baseAddress);
 
     return (req, res, next) => {
-      client.track(req)
+      client.verify(req)
         .then((response) => {
           if (response.status === 200) {
             // Add some data about the client.

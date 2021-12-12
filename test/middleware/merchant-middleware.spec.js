@@ -14,7 +14,7 @@ describe('merchantMiddleware', () => {
 
   it('should run', () => {
     const merchantClientMock = {
-      track: jest.fn().mockReturnValue({
+      verify: jest.fn().mockReturnValue({
         then: (callback) => {
           const response = {
             status: 200,
@@ -44,7 +44,7 @@ describe('merchantMiddleware', () => {
 
   it('should handle error responses', () => {
     const merchantClientMock = {
-      track: jest.fn().mockReturnValue({
+      verify: jest.fn().mockReturnValue({
         then: (callback) => {
           const response = {
             status: 400,
@@ -75,7 +75,7 @@ describe('merchantMiddleware', () => {
 
   it('should handle errors', () => {
     const merchantClientMock = {
-      track: jest.fn().mockReturnValue({
+      verify: jest.fn().mockReturnValue({
         then: () => {
           return {
             catch: (callback) => {
