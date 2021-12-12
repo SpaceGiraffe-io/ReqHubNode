@@ -1,6 +1,6 @@
 {
   "name": "reqhub",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "SpaceGiraffe, LLC",
   "description": "ReqHub middleware for NodeJs projects. Distribute your API using the ReqHub platform in just a few lines! For more information, visit https://reqhub.io/.",
   "homepage": "https://github.com/SpaceGiraffe-io/ReqHubNode#readme",
@@ -17,7 +17,7 @@
     "lint": "eslint .",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "publish": "npm run test && npm run lint && npm publish --access public"
+    "deploy": "npm run test && npm run lint && npm publish --access public"
   },
   "dependencies": {
     "crypto-js": "^4.0.0"

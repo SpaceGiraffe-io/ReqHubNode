@@ -1,6 +1,7 @@
 const httpUtility = require('../../src/utility/http-utility');
 
 const https = require('https');
+const http = require('http');
 
 describe('httpUtility', () => {
   it('should be defined', () => {
@@ -27,6 +28,32 @@ describe('httpUtility', () => {
     });
 
     httpUtility.createRequest('https://spacegiraffe.io/url', 'TEST')
+      .then((response) => {
+        expect(response.status).toBe(200);
+        done();
+      });
+  });
+
+  it('should create request for http URLs', (done) => {
+    const req = {
+      on: jest.fn(),
+      write: jest.fn(),
+      end: jest.fn()
+    };
+    const res = {
+      statusCode: 200,
+      on: (event, resEventCallback) => {
+        if (event === 'end') {
+          resEventCallback();
+        }
+      }
+    };
+    spyOn(http, 'request').and.callFake((url, requestOptions, callback) => {
+      callback(res);
+      return req;
+    });
+
+    httpUtility.createRequest('http://spacegiraffe.io/url', 'TEST')
       .then((response) => {
         expect(response.status).toBe(200);
         done();
