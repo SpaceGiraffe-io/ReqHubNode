@@ -86,7 +86,7 @@ client.get('https://example-url/endpoint')
 ```
 
 ## Per-endpoint configuration
-ReqHub can be configured on a per-endpoint or per-path basis. This is useful if you only want to publish a portion of your API, or if you want to include multiple small APIs in a single server instance to reduce hosting costs.
+ReqHub can be configured on a per-endpoint basis, like any Express middleware. This is useful if you only want to publish a portion of your API, or if you want to include multiple small APIs in a single server instance to reduce hosting costs.
 
 With a middleware instance like this:
 ```js
@@ -103,7 +103,7 @@ app.get('/', reqhubMiddleware, (req, res) => {
 });
 ```
 
-You can also add it to a path:
+You can also add it to a group of endpoints that share a common base route:
 ```js
 // All endpoints starting with /example will use ReqHub
 app.use('/example', reqhubMiddleware);
@@ -113,7 +113,7 @@ app.get('/example/test', (req, res) => {
 });
 ```
 
-ReqHub middleware is standard Express middleware. See https://expressjs.com/en/guide/using-middleware.html for more applications.
+See https://expressjs.com/en/guide/using-middleware.html for more information on using Express middleware.
 
 ## Contributing
 Go for it! If we're missing something or you're running into a problem, either let us know in an issue or send us a pull request.
