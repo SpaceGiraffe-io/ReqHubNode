@@ -21,7 +21,7 @@ const httpUtility = {
         }
 
         if (requestOptions.headers['Content-Length'] == null) {
-          requestOptions.headers['Content-Length'] = requestData.length;
+          requestOptions.headers['Content-Length'] = new TextEncoder().encode(requestData).length;
         }
       }
 
