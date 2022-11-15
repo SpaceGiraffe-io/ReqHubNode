@@ -66,7 +66,7 @@ const reqhub = require('reqhub');
 const publicKey = 'yourClientPublicKey';
 const privateKey = 'yourClientPrivateKey';
 
-const client = reqhub.apiClient.create('yourClientPublicKey', 'yourClientPrivateKey');
+const client = reqhub.apiClient.create(publicKey, privateKey);
 ```
 
 Then use it to make requests!
