@@ -1,5 +1,6 @@
 const http = require('http');
 const https = require('https');
+const { TextEncoder } = require('util');
 
 const httpUtility = {
   createRequest: (url, method, data, options) => {
